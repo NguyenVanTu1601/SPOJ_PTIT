@@ -1,0 +1,29 @@
+/*
+ Mảng Max[i] lưu gia trị lớn nhất có thể có tại vị trí i
+Max[i]  = Max[i-1] + a[i] nếu Max[i] > a[i]
+ngược lại Max[i] = a[i];
+*/
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+main(){
+	long long n;
+	cin >> n;
+	long long a[n+1];
+	for(int i = 1; i <= n; i++){
+		cin >> a[i];
+	}
+	long long Max[n+1];
+	Max[1] = a[1];
+	long long maximun = 0;
+	for(long long i = 2; i <= n; i++){
+		long long sum = Max[i-1] + a[i];
+		if(sum > a[i]) Max[i] = sum;
+		else Max[i] = a[i];
+		if(Max[i] > maximun) maximun = Max[i];
+	}
+	cout << maximun;
+    return 0;
+}
+
